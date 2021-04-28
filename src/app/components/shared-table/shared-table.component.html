@@ -1,0 +1,16 @@
+<table style="width:100%" border="1" *ngIf="dataSource else loading">
+  <thead>
+    <th *ngFor="let th of schema">{{th.header}}</th>
+  </thead>
+  <tr *ngFor="let row of dataSource">
+    <td *ngFor="let cell of schema; index as i">
+      {{ row[cell.def] }}
+    </td>
+  </tr>
+</table>
+
+<ng-template #loading>
+
+  Loading...
+
+</ng-template>
