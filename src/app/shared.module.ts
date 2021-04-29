@@ -7,7 +7,12 @@ import { TextComponent } from './components/shared-table/text/text.component';
 import { SharedTableComponent } from './components/shared-table/shared-table.component';
 
 @NgModule({
-  declarations: [SharedTableComponent],
+  declarations: [
+    SharedTableComponent,
+    IconComponent,
+    ButtonComponent,
+    TextComponent,
+  ],
   exports: [SharedTableComponent],
   imports: [CommonModule, FormsModule],
   entryComponents: [IconComponent, TextComponent, ButtonComponent],

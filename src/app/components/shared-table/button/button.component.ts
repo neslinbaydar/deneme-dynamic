@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ISchemaModel } from 'src/app/models/data-model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,13 +6,14 @@ import { ISchemaModel } from 'src/app/models/data-model';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  isActionActive: true;
+  @Input() id: number;
+
   constructor() {}
 
-  schema: ISchemaModel[] = [{ def: 'actions', header: 'Actions' }];
   ngOnInit(): void {}
+
   clickEvent(e) {
     console.log(e);
-    alert('Clicked');
+    alert('Clicked' + this.id);
   }
 }

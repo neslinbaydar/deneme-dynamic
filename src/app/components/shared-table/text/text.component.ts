@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./text.component.scss'],
 })
 export class TextComponent implements OnInit {
-  value: string;
-  tooltipText: string;
+  value: string = 'Text component';
 
   constructor() {}
 

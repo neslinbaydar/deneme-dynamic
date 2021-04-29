@@ -5,13 +5,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IconComponent } from './components/shared-table/icon/icon.component';
-import { TextComponent } from './components/shared-table/text/text.component';
-import { ButtonComponent } from './components/shared-table/button/button.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
-  declarations: [AppComponent, IconComponent, TextComponent, ButtonComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    Ng2SearchPipeModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

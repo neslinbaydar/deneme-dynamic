@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ComponentFactoryResolver,
-  OnDestroy,
-  OnInit,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IDataSourceModel, ISchemaModel } from 'src/app/models/data-model';
@@ -15,12 +8,8 @@ import { GlobalServices } from '../../services/services';
   selector: 'app-posts',
   templateUrl: './posts.component.html',
 })
-export class PostsComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor(
-    private globalService: GlobalServices
-  ) //private vf: ViewContainerRef,
-  //private componentFactoryResolver: ComponentFactoryResolver
-  {}
+export class PostsComponent implements OnInit, OnDestroy {
+  constructor(private globalService: GlobalServices) {}
 
   private destroy$: Subject<any> = new Subject();
 
@@ -39,12 +28,6 @@ export class PostsComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe((posts: any) => {
         this.dataSource = posts;
       });
-  }
-  ngAfterViewInit() {
-    //let resolver = this.componentFactoryResolver.resolveComponentFactory(
-    //  PostsComponent
-    //);
-    //let componentFactory = this.vf.createComponent(resolver);
   }
 
   ngOnDestroy(): void {

@@ -12,6 +12,7 @@ import { IDataSourceModel, ISchemaModel } from 'src/app/models/data-model';
 import { IconComponent } from './icon/icon.component';
 import { TextComponent } from './text/text.component';
 import { ButtonComponent } from './button/button.component';
+
 @Component({
   selector: 'app-shared-table',
   templateUrl: './shared-table.component.html',
@@ -21,45 +22,77 @@ export class SharedTableComponent implements OnInit {
   @Input() schema: ISchemaModel[];
   @Input() dataSource: IDataSourceModel[];
 
-  @Input() icon: string;
-  @Output() emitFunction = new EventEmitter();
-  //@Output() columnClicked = new EventEmitter<>();
+  component: any;
 
-  clickEvent(e) {
-    this.emitFunction.emit(e);
-  }
-  clickIcon() {}
+  // entities: any = [
+  //   {
+  //     type: 'text',
+  //      def:'name',
+  //     component: textComponent,
+  //   },//bu benim schemam
+  //   {
+  //     type: 'button',
+  //     name: ButtonComponent,
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: TextComponent,
+  //   },
+  // ];
+  // buraya nekadar entity yazarsam ekliyorum,onun icinde buldugu muddetce calisacak
+
+  //clickIcon() {}
   constructor(
     private vf: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver
   ) {}
   ngOnInit(): void {
-    let resolver = this.componentFactoryResolver.resolveComponentFactory(
-      IconComponent
-    );
-    let componentRef = this.vf.createComponent(resolver);
-    let componentFactory = this.vf.createComponent(resolver);
+    //this.renderComponentByType('icon');
+    // bu sayfamın en asagisında calisiacak ve icon render olucak default olarak
   }
 
+  //1.yöntem-switch-case ile:
   renderComponentByType(type: string) {
-    let component = null;
+    // burdan hangi type geliyorsa ona uygun switchden birini seçiyor
+    this.component = null;
+
     switch (type) {
       case 'icon':
-        component = IconComponent;
+        this.component = IconComponent;
         break;
       case 'text':
-        component = TextComponent;
+        this.component = TextComponent;
         break;
       case 'button':
-        component = ButtonComponent;
+        this.component = ButtonComponent;
+        // örneğin,componente butonun componentini veriyo
         break;
       default:
-        if (!component) throw new Error(`type ${type} not supported`);
-        const resolver = this.componentFactoryResolver.resolveComponentFactory(
-          component
-        );
-        return this.vf.createComponent(resolver);
+        if (!this.component) throw new Error(`type ${type} not supported`);
+        return alert(`type ${type} not supported`);
         break;
     }
+    const resolver = this.componentFactoryResolver.resolveComponentFactory(
+      this.component
+    );
+    return this.vf.createComponent(resolver);
   }
+
+  // rendercomponent with filter:2.yöntem
+
+  // renderComponentByType(type: string) {
+
+  //   this.component = null;
+  //   console.log(type);
+  //   var currentType = this.entities.filter((x: any) => x.type == type)[0];
+  //   console.log(currentType);
+  //   if (currentType) {
+  //     const resolver = this.componentFactoryResolver.resolveComponentFactory(
+  //       currentType.name
+  //     );
+  //     return this.vf.createComponent(resolver);
+  //   } else {
+  //     alert('something is wrong');
+  //   }
+  // }
 }

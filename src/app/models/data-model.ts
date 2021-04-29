@@ -1,3 +1,5 @@
+import { ButtonComponent } from '../components/shared-table/button/button.component';
+
 export interface ISchemaModel {
   def: string;
   header: string;
