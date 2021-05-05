@@ -24,67 +24,56 @@ export class SharedTableComponent implements OnInit {
 
   entities: any = [
     {
-      id: 1,
       type: 'text',
       def: 'id',
       component: TextComponent,
     },
     {
-      id: 2,
       type: 'text',
       def: 'name',
       component: TextComponent,
     },
     {
-      id: 3,
       type: 'text',
       def: 'username',
       component: TextComponent,
     },
     {
-      id: 4,
       type: 'button',
       def: 'button',
       component: ButtonComponent,
     },
     {
-      id: 5,
       type: 'text',
       def: 'text',
       component: TextComponent,
     },
     {
-      id: 6,
       type: 'email',
       def: 'email',
       component: MailComponent,
     },
     {
-      id: 7,
       type: 'phone',
       def: 'phone',
       component: PhoneComponent,
     },
     {
-      id: 8,
       type: 'website',
       def: 'website',
       component: DomainComponent,
     },
     {
-      id: 9,
       type: 'text',
       def: 'title',
       component: TextComponent,
     },
     {
-      id: 10,
       type: 'text',
       def: 'userId',
       component: TextComponent,
     },
     {
-      id: 11,
       type: 'text',
       def: 'body',
       component: TextComponent,
