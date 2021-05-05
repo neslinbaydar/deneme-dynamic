@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GeneralSettings } from 'src/app/settings';
 
 @Component({
   selector: 'app-button',
@@ -6,14 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  @Input() id: number;
-
-  constructor() {}
+  data: any;
+  constructor(settings: GeneralSettings) {
+    this.data = settings;
+    console.log(this.data);
+  }
 
   ngOnInit(): void {}
 
   clickEvent(e) {
-    console.log(e);
-    alert('Clicked' + this.id);
+    // alert('Clicked' + this.id);
   }
 }

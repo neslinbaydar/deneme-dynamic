@@ -1,40 +1,24 @@
-<div class="text-center">
-  <app-text></app-text>
-</div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-striped" *ngIf="dataSource else loading">
+      <thead class="table-dark">
+        <tr>
+          <ng-container *ngFor="let th of schema ">
+            <th>{{th.header}}</th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataSource">
+          <td *ngFor="let cell of schema; index as i">
+            <ng-container *ngComponentOutlet="getComponent(cell.def);injector: getInjector(data,cell)"></ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading>
+    Loading...
+  </ng-template>
 
-<div class="table-responsive">
-  <app-icon></app-icon>
-  <table class="table table-striped" *ngIf="dataSource else loading">
-    <thead class="table-dark">
-      <tr>
-        <ng-container *ngFor="let th of schema ">
-          <th [ngClass]="th.def == 'body'? 'w-50' : ''">{{th.header}}</th>
-        </ng-container>
-        <th>button</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of dataSource">
-        <td *ngFor="let cell of schema; index as i">
-          {{ row[cell.def] }}
-        </td>
-        <td>
-          <app-button [id]="row.id"></app-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<ng-template #loading>
-
-  Loading...
-
-</ng-template>
-
-<div class="p-3 ">
-  <button (click)="renderComponentByType('button')" class="btn btn-outline-info  ms-3"> button</button>
-  <button (click)="renderComponentByType('text')" class="btn btn-outline-warning  ms-3"> text</button>
-  <button (click)="renderComponentByType('icon')" class="btn btn-outline-danger  ms-3"> icon</button>
 </div>

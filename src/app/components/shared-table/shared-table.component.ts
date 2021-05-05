@@ -1,17 +1,12 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, Injector, Input, OnInit } from '@angular/core';
 import { IDataSourceModel, ISchemaModel } from 'src/app/models/data-model';
 
-import { IconComponent } from './icon/icon.component';
-import { TextComponent } from './text/text.component';
-import { ButtonComponent } from './button/button.component';
+import { TextComponent } from '../text/text.component';
+import { ButtonComponent } from '../button/button.component';
+import { MailComponent } from '../mail/mail.component';
+import { PhoneComponent } from '../phone/phone.component';
+import { DomainComponent } from '../domain/domain.component';
+import { GeneralSettings } from 'src/app/settings';
 
 @Component({
   selector: 'app-shared-table',
@@ -21,78 +16,106 @@ import { ButtonComponent } from './button/button.component';
 export class SharedTableComponent implements OnInit {
   @Input() schema: ISchemaModel[];
   @Input() dataSource: IDataSourceModel[];
-
+  private injectors = {};
   component: any;
 
-  // entities: any = [
-  //   {
-  //     type: 'text',
-  //      def:'name',
-  //     component: textComponent,
-  //   },//bu benim schemam
-  //   {
-  //     type: 'button',
-  //     name: ButtonComponent,
-  //   },
-  //   {
-  //     type: 'text',
-  //     name: TextComponent,
-  //   },
-  // ];
-  // buraya nekadar entity yazarsam ekliyorum,onun icinde buldugu muddetce calisacak
+  constructor(private inj: Injector) {}
+  ngOnInit(): void {}
 
-  //clickIcon() {}
-  constructor(
-    private vf: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
-  ) {}
-  ngOnInit(): void {
-    //this.renderComponentByType('icon');
-    // bu sayfamın en asagisında calisiacak ve icon render olucak default olarak
-  }
+  entities: any = [
+    {
+      id: 1,
+      type: 'text',
+      def: 'id',
+      component: TextComponent,
+    },
+    {
+      id: 2,
+      type: 'text',
+      def: 'name',
+      component: TextComponent,
+    },
+    {
+      id: 3,
+      type: 'text',
+      def: 'username',
+      component: TextComponent,
+    },
+    {
+      id: 4,
+      type: 'button',
+      def: 'button',
+      component: ButtonComponent,
+    },
+    {
+      id: 5,
+      type: 'text',
+      def: 'text',
+      component: TextComponent,
+    },
+    {
+      id: 6,
+      type: 'email',
+      def: 'email',
+      component: MailComponent,
+    },
+    {
+      id: 7,
+      type: 'phone',
+      def: 'phone',
+      component: PhoneComponent,
+    },
+    {
+      id: 8,
+      type: 'website',
+      def: 'website',
+      component: DomainComponent,
+    },
+    {
+      id: 9,
+      type: 'text',
+      def: 'title',
+      component: TextComponent,
+    },
+    {
+      id: 10,
+      type: 'text',
+      def: 'userId',
+      component: TextComponent,
+    },
+    {
+      id: 11,
+      type: 'text',
+      def: 'body',
+      component: TextComponent,
+    },
+  ];
 
-  //1.yöntem-switch-case ile:
-  renderComponentByType(type: string) {
-    // burdan hangi type geliyorsa ona uygun switchden birini seçiyor
-    this.component = null;
-
-    switch (type) {
-      case 'icon':
-        this.component = IconComponent;
-        break;
-      case 'text':
-        this.component = TextComponent;
-        break;
-      case 'button':
-        this.component = ButtonComponent;
-        // örneğin,componente butonun componentini veriyo
-        break;
-      default:
-        if (!this.component) throw new Error(`type ${type} not supported`);
-        return alert(`type ${type} not supported`);
-        break;
+  getComponent(def: string) {
+    if (def) {
+      let currentEntity = this.entities.find((x: any) => x.def == def);
+      if (currentEntity) {
+        return currentEntity.component;
+      }
     }
-    const resolver = this.componentFactoryResolver.resolveComponentFactory(
-      this.component
-    );
-    return this.vf.createComponent(resolver);
   }
-
-  // rendercomponent with filter:2.yöntem
-
-  // renderComponentByType(type: string) {
-
-  //   this.component = null;
-  //   console.log(type);
-  //   var currentType = this.entities.filter((x: any) => x.type == type)[0];
-  //   console.log(currentType);
-  //   if (currentType) {
-  //     const resolver = this.componentFactoryResolver.resolveComponentFactory(
-  //       currentType.name
-  //     );
-  //     return this.vf.createComponent(resolver);
-  //   } else {
-  //     alert('something is wrong');
-  //   }
-  // }
+  getInjector(data: IDataSourceModel, cell: ISchemaModel) {
+    console.log(data);
+    console.log(cell);
+    if (cell && data) {
+      let inject = this.injectors[cell.def];
+      if (!inject) {
+        inject = Injector.create(
+          [
+            {
+              provide: GeneralSettings,
+              useValue: data[cell.def],
+            },
+          ],
+          this.inj
+        );
+      }
+      return inject;
+    }
+  }
 }

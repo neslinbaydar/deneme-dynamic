@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { TextComponent } from 'src/app/components/text/text.component';
 import { IDataSourceModel, ISchemaModel } from 'src/app/models/data-model';
 import { GlobalServices } from '../../services/services';
 
@@ -14,13 +15,13 @@ export class PostsComponent implements OnInit, OnDestroy {
   private destroy$: Subject<any> = new Subject();
 
   schema: ISchemaModel[] = [
-    { def: 'id', header: 'ID' },
-    { def: 'title', header: 'Title' },
-    { def: 'userId', header: 'User ID' },
-    { def: 'body', header: 'Body' },
+    { def: 'id', header: 'ID', component: TextComponent },
+    { def: 'title', header: 'Title', component: TextComponent },
+    { def: 'userId', header: 'User ID', component: TextComponent },
+    { def: 'body', header: 'Body', component: TextComponent },
   ];
-  dataSource: IDataSourceModel[];
 
+  dataSource: IDataSourceModel[];
   ngOnInit(): void {
     this.globalService
       .getPosts()

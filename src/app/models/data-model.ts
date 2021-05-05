@@ -1,8 +1,7 @@
-import { ButtonComponent } from '../components/shared-table/button/button.component';
-
 export interface ISchemaModel {
   def: string;
   header: string;
+  component: any;
 }
 export interface IDataSourceModel {
   id: number;
@@ -12,4 +11,5 @@ export interface IDataSourceModel {
   email: string;
   website?: string;
   isActionActive?: boolean;
+  type: string;
 }
