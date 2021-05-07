@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GeneralSettings } from 'src/app/settings';
+import { GeneralSettings } from 'src/app/services/settings';
 
 @Component({
   selector: 'app-phone',

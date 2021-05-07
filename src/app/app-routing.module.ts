@@ -7,6 +7,11 @@ const routes: Routes = [
       import('./modules/users/users.module').then((m) => m.UsersModule),
   },
   {
+    path: 'posts/:id',
+    loadChildren: () =>
+      import('./modules/posts/posts.module').then((m) => m.PostsModule),
+  },
+  {
     path: 'posts',
     loadChildren: () =>
       import('./modules/posts/posts.module').then((m) => m.PostsModule),

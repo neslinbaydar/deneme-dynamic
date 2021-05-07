@@ -1,4 +1,5 @@
 [{
+        "icon":"fas fa-info-circle",
         "id": 1,
         "name": "Leanne Graham",
         "username": "Bret",
@@ -22,6 +23,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 2,
         "name": "Ervin Howell",
         "username": "Antonette",
@@ -45,6 +47,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 3,
         "name": "Clementine Bauch",
         "username": "Samantha",
@@ -68,6 +71,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 4,
         "name": "Patricia Lebsack",
         "username": "Karianne",
@@ -91,6 +95,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 5,
         "name": "Chelsey Dietrich",
         "username": "Kamren",
@@ -114,6 +119,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 6,
         "name": "Mrs. Dennis Schulist",
         "username": "Leopoldo_Corkery",
@@ -137,6 +143,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 7,
         "name": "Kurtis Weissnat",
         "username": "Elwyn.Skiles",
@@ -160,6 +167,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 8,
         "name": "Nicholas Runolfsdottir V",
         "username": "Maxime_Nienow",
@@ -183,6 +191,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 9,
         "name": "Glenna Reichert",
         "username": "Delphine",
@@ -206,6 +215,7 @@
         }
     },
     {
+        "icon":"fas fa-info-circle",
         "id": 10,
         "name": "Clementina DuBuque",
         "username": "Moriah.Stanton",

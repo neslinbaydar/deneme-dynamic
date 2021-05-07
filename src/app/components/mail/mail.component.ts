@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IDataSourceModel } from 'src/app/models/data-model';
-import { GeneralSettings } from 'src/app/settings';
+import { GeneralSettings } from 'src/app/services/settings';
 
 @Component({
   selector: 'app-mail',

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IDataSourceModel } from 'src/app/models/data-model';
+import { GeneralSettings } from 'src/app/services/settings';
 
 @Component({
   selector: 'app-icon',
@@ -6,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./icon.component.scss'],
 })
 export class IconComponent implements OnInit {
-  constructor() {}
+  @Input() dataSource: IDataSourceModel[];
+  data: any;
 
-  ngOnInit(): void {}
+  constructor(settings: GeneralSettings) {
+    this.data = settings;
+  }
+  ngOnInit() {}
 }

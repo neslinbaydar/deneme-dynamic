@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ButtonComponent } from 'src/app/components/button/button.component';
+import { DomainComponent } from 'src/app/components/domain/domain.component';
+import { MailComponent } from 'src/app/components/mail/mail.component';
+import { PhoneComponent } from 'src/app/components/phone/phone.component';
 import { TextComponent } from 'src/app/components/text/text.component';
 
 import { IDataSourceModel, ISchemaModel } from 'src/app/models/data-model';
@@ -19,9 +23,10 @@ export class UsersComponent implements OnInit, OnDestroy {
     { def: 'id', header: 'ID', component: TextComponent },
     { def: 'name', header: 'Name', component: TextComponent },
     { def: 'username', header: 'UserName', component: TextComponent },
-    { def: 'email', header: 'Email', component: TextComponent },
-    { def: 'phone', header: 'Phone', component: TextComponent },
-    { def: 'website', header: 'Website', component: TextComponent },
+    { def: 'email', header: 'Email', component: MailComponent },
+    { def: 'phone', header: 'Phone', component: PhoneComponent },
+    { def: 'website', header: 'Website', component: DomainComponent },
+    { def: 'id', header: 'Button', component: ButtonComponent },
   ];
 
   dataSource: IDataSourceModel[];

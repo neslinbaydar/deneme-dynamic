@@ -1,14 +1,14 @@
 * {
   padding: 0; //her taraf
   padding: 0 10px 20px 3px saat istikametinde;
-  padding: 10px 5px; //(y,x) ilk yazdigin yukari asaggi 10px 2cisi sagdan soldan 5px
+  padding: 10px 5px; //(y,x) ilk yazdigim yukari aşaği 10px,ikincisi sagdan soldan 5px
   padding-top: 0;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
 }
 
-// margin - elementin disindan mesafe veriyo yukardakilarin aynisi da margin icin gecerli
+// margin - elementin disindan mesafe vermemi sağlar, yukarıdakilerin aynisi da margin icin gecerli
 * {
   margin: 0; //her taraf
   margin: 0 10px 20px 3px saat istikametinde;
